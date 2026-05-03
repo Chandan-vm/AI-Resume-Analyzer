@@ -127,3 +127,5 @@ if st.button("🚀 Analyze Resume"):
 
     else:
         st.warning("⚠️ Please upload a resume and paste the job description.")
+
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
