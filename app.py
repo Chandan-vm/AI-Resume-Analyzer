@@ -1,8 +1,8 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
 import streamlit as st
 import pdfplumber
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 from sklearn.metrics.pairwise import cosine_similarity
 
 # ---------- FUNCTIONS ----------
@@ -22,7 +22,14 @@ def clean_text(text):
     return text
 
 def get_keywords(text):
-    return set(text.split())
+    words = text.split()
+
+    keywords = [
+        word for word in words
+        if word not in ENGLISH_STOP_WORDS and len(word) > 2
+    ]
+
+    return set(keywords)
 
 # ---------- UI ----------
 
@@ -128,4 +135,3 @@ if st.button("🚀 Analyze Resume"):
     else:
         st.warning("⚠️ Please upload a resume and paste the job description.")
 
-from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
