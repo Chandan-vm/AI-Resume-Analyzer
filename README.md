@@ -34,44 +34,32 @@ To solve this, I built an intelligent system that:
 
 ## 🚀 Key Features
 
-- 📄 Upload Resume (PDF support)
-- 📋 Paste Job Description
-- 📊 ATS Score Calculation
-- 🔑 Keyword Matching & Missing Keyword Detection
-- 📈 Skills Match Percentage
-- 💡 Personalized Resume Improvement Suggestions
-- 🧭 Multi-page interactive Streamlit application
+- 📄 Resume upload (PDF support)
+- 📋 Job Description analysis
+- 🎯 ATS Score calculation
+- 🔍 Skill-based matching (NOT keyword spam)
+- ❌ Missing skill detection
+- ➕ Extra skills identification
+- 💡 Smart recommendations
+- 🎨 Premium UI (Streamlit + custom CSS)
 
 ---
 
-## 🧠 How It Works (Technical Explanation)
+## 🧠 How It Works
 
-### 1. Text Extraction
-- Resume text is extracted from PDF using `pdfplumber`
-
-### 2. Text Preprocessing
-- Lowercasing
-- Removing special characters
-- Tokenization
-
-### 3. Feature Engineering
-- TF-IDF (Term Frequency–Inverse Document Frequency) is used to convert text into numerical vectors
-
-### 4. Similarity Calculation
-- Cosine Similarity is used to measure how closely the resume matches the job description
-
-### 5. Keyword Analysis
-- Matching Keywords → Present in both resume & JD
-- Missing Keywords → Present in JD but not in resume
-
-### 6. ATS Scoring Logic
-
-The final ATS score is calculated using weighted components:
-
-- Keyword Match → 40%
-- Skills Match → 30%
-- Experience → 20%
-- Education → 10%
+1. Extracts resume text from PDF using pdfplumber  
+2. Cleans and normalizes text  
+3. Uses TF-IDF + Cosine Similarity to compute semantic match  
+4. Extracts skills using a curated skill dictionary  
+5. Compares:
+   - Matching skills
+   - Missing skills
+   - Extra skills  
+6. Calculates ATS score based on:
+   - Match Score (40%)
+   - Skill Match (50%)
+   - Base Score (10%)  
+7. Generates actionable recommendations for improvement
 
 ---
 
@@ -86,6 +74,28 @@ The system provides:
 - Suggestions (e.g., add tools, improve alignment)
 
 ---
+
+## 🌐 Live Demo
+
+Try the app here:  
+👉 https://ai-resume-analyzer-lh6j9dhzhoqczpf2qcyj8q.streamlit.app/
+
+---
+
+## 💡 What Makes This Different?
+
+Unlike basic resume analyzers that rely on simple keyword matching, this system:
+
+- Uses a curated skill dictionary to extract meaningful skills  
+- Avoids irrelevant words like “responsible”, “seeking”, etc.  
+- Provides structured skill comparison (matching / missing / extra)  
+- Delivers actionable, real-world recommendations  
+- Built based on real job search challenges  
+
+This makes the tool closer to real ATS systems used in industry.
+
+---
+
 
 ## 🛠️ Tech Stack
 
@@ -126,5 +136,5 @@ It demonstrates:
 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/ai-resume-analyzer.git
+git clone https://github.com/Chandan-vm/AI-Resume-Analyzer
 cd ai-resume-analyzer
