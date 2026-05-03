@@ -24,9 +24,10 @@ def clean_text(text):
 def get_keywords(text):
     words = text.split()
 
+    # Remove useless words (stopwords) + small words
     keywords = [
         word for word in words
-        if word not in ENGLISH_STOP_WORDS and len(word) > 2
+        if word not in ENGLISH_STOP_WORDS and len(word) > 3
     ]
 
     return set(keywords)
@@ -71,12 +72,17 @@ if st.button("🚀 Analyze Resume"):
             similarity = cosine_similarity(vectors[0], vectors[1])[0][0]
             match_score = round(similarity * 100, 2)
 
-            # Keywords
+            # Keywords (filtered)
             resume_words = get_keywords(resume_clean)
             jd_words = get_keywords(jd_clean)
 
             matching = resume_words.intersection(jd_words)
-            missing = jd_words.difference(resume_words)
+
+            # 🔥 FIXED: dynamic + filtered missing keywords
+            missing = [
+                word for word in jd_words.difference(resume_words)
+                if word not in ENGLISH_STOP_WORDS and len(word) > 3
+            ]
 
             skills_percent = round((len(matching) / len(jd_words)) * 100, 2) if jd_words else 0
 
@@ -112,7 +118,7 @@ if st.button("🚀 Analyze Resume"):
 
         with col2:
             st.subheader("❌ Missing Keywords")
-            st.write(list(missing)[:15] if missing else "No missing keywords")
+            st.write(missing[:15] if missing else "No missing keywords")
 
         st.divider()
 
@@ -121,7 +127,7 @@ if st.button("🚀 Analyze Resume"):
         st.subheader("💡 Suggestions")
 
         if len(missing) > 0:
-            st.write("👉 Add these keywords:", list(missing)[:5])
+            st.write("👉 Add these keywords:", missing[:5])
 
         if skills_percent < 50:
             st.write("👉 Improve skills alignment with the job description")
