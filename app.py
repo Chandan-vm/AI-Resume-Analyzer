@@ -1,3 +1,4 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
 import streamlit as st
 import pdfplumber
 import re
