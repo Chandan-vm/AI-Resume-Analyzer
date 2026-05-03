@@ -95,13 +95,28 @@ html, body, [class*="css"] {
     background: #0d0d18 !important;
     border: 1.5px solid #1e1e2e !important;
     border-radius: 12px !important;
-    color: #e8e6f0 !important;
+    color: #f5f5ff !important;   /* brighter text */
     font-family: 'DM Mono', monospace !important;
-    font-size: 0.82rem !important;
-    min-height: 180px !important;
+    font-size: 0.95rem !important;  /* bigger text */
+    line-height: 1.6 !important;
+    padding: 12px !important;
+    min-height: 200px !important;
 }
-.stTextArea textarea:focus { border-color: #2affd0 !important; box-shadow: 0 0 0 3px rgba(42,255,208,0.08) !important; }
 
+/* 🔥 FIX PLACEHOLDER TEXT */
+.stTextArea textarea::placeholder {
+    color: #8f8db0 !important;   /* brighter + more readable */
+    opacity: 1 !important;
+    font-size: 0.95rem !important;
+}
+.stTextArea textarea {
+    transition: all 0.25s ease !important;
+}
+
+.stTextArea textarea:focus {
+    border-color: #2affd0 !important;
+    box-shadow: 0 0 0 3px rgba(42,255,208,0.12) !important;
+}
 .stButton > button {
     width: 100% !important;
     background: linear-gradient(135deg, #2affd0 0%, #00c9a7 100%) !important;
@@ -117,8 +132,10 @@ html, body, [class*="css"] {
     box-shadow: 0 4px 24px rgba(42,255,208,0.2) !important;
     transition: all 0.2s !important;
 }
-.stButton > button:hover { transform: translateY(-2px) !important; box-shadow: 0 8px 32px rgba(42,255,208,0.35) !important; }
-
+.stButton > button:hover {
+    transform: translateY(-2px) scale(1.01) !important;
+    box-shadow: 0 10px 40px rgba(42,255,208,0.4) !important;
+}
 .score-ring-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2rem 1rem; }
 .ring-svg { filter: drop-shadow(0 0 18px rgba(42,255,208,0.35)); }
 
