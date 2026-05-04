@@ -102,14 +102,25 @@ h1, h2, h3, h4, h5, h6 { color: #e8e6f0 !important; }
     font-size: 0.8rem !important;
 }
 
-/* Upload button inside the dropzone */
+/* Upload button — clean restyle, no duplicate text */
 .stFileUploader button {
-    background: rgba(42,255,208,0.1) !important;
+    background: rgba(42,255,208,0.08) !important;
     border: 1px solid rgba(42,255,208,0.3) !important;
     color: #2affd0 !important;
     border-radius: 8px !important;
-    font-family: 'Syne', sans-serif !important;
-    font-weight: 600 !important;
+    font-family: 'DM Mono', monospace !important;
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+}
+/* This hides the extra injected span inside Streamlit's upload button that causes "upload Upload" */
+.stFileUploader [data-testid="stFileUploaderDropzone"] button > div {
+    display: none !important;
+}
+.stFileUploader [data-testid="stFileUploaderDropzone"] button::before {
+    content: "Browse file";
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: #2affd0;
 }
 
 /* Uploaded file name */
@@ -131,8 +142,12 @@ h1, h2, h3, h4, h5, h6 { color: #e8e6f0 !important; }
     border-color: #2affd0 !important;
     box-shadow: 0 0 0 3px rgba(42,255,208,0.08) !important;
 }
-/* Placeholder text */
-.stTextArea textarea::placeholder { color: #3d3b52 !important; opacity: 1 !important; }
+/* Placeholder text — bright enough to read */
+.stTextArea textarea::placeholder {
+    color: #6b6882 !important;
+    opacity: 1 !important;
+    font-style: italic !important;
+}
 
 /* ── Any leftover Streamlit default text ─── */
 .stMarkdown p, .stMarkdown span { color: #e8e6f0 !important; }
