@@ -33,6 +33,14 @@ html, body, [class*="css"] {
 ::-webkit-scrollbar-track { background: #0a0a0f; }
 ::-webkit-scrollbar-thumb { background: #2affd0; border-radius: 4px; }
 
+/* ── Global text visibility — dark bg fix ── */
+div, span, p, label, small, li { color: #c0bdd4; }
+strong, b { color: #e8e6f0 !important; }
+h1, h2, h3, h4, h5, h6 { color: #e8e6f0 !important; }
+[data-testid="stMetricLabel"] { color: #8b899e !important; }
+[data-testid="stMetricValue"] { color: #2affd0 !important; }
+[data-testid="stNotification"] p, [data-testid="stAlert"] p { color: #e8e6f0 !important; }
+
 .hero {
     text-align: center; padding: 3.5rem 1rem 2rem;
     background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(42,255,208,0.12) 0%, transparent 70%);
@@ -55,23 +63,81 @@ html, body, [class*="css"] {
 .hero p { color: #8b899e; font-size: 1rem; max-width: 520px; margin: 0 auto; line-height: 1.6; }
 
 .upload-card {
-    background: #13131f; border: 1px solid #1e1e2e; border-radius: 16px;
-    padding: 1.6rem 1.8rem; margin-bottom: 0.5rem;
+    background: #13131f;
+    border: 1px solid #2a2a3e;
+    border-radius: 16px;
+    padding: 1.6rem 1.8rem;
+    margin-bottom: 0.5rem;
 }
 .card-label {
-    font-size: 0.7rem; font-family: 'DM Mono', monospace !important;
-    letter-spacing: 0.15em; text-transform: uppercase; color: #2affd0; margin-bottom: 0.8rem;
+    font-size: 0.72rem;
+    font-family: 'DM Mono', monospace !important;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #2affd0 !important;
+    margin-bottom: 0.9rem;
+    font-weight: 600;
+    display: block;
 }
+/* ── File uploader box ───────────────────── */
 .stFileUploader > div > div {
-    background: #0d0d18 !important; border: 1.5px dashed #2a2a3e !important; border-radius: 12px !important;
+    background: #0d0d18 !important;
+    border: 1.5px dashed #3a3a52 !important;
+    border-radius: 12px !important;
 }
 .stFileUploader > div > div:hover { border-color: #2affd0 !important; }
-.stTextArea textarea {
-    background: #0d0d18 !important; border: 1.5px solid #1e1e2e !important;
-    border-radius: 12px !important; color: #e8e6f0 !important;
-    font-family: 'DM Mono', monospace !important; font-size: 0.82rem !important;
+
+/* Drag-drop instruction text & size hint */
+.stFileUploader span,
+.stFileUploader p,
+.stFileUploader small,
+.stFileUploader div[data-testid="stFileUploaderDropzoneInstructions"] span,
+.stFileUploader div[data-testid="stFileUploaderDropzoneInstructions"] small,
+.stFileUploader label,
+[data-testid="stFileUploaderDropzone"] span,
+[data-testid="stFileUploaderDropzone"] small,
+[data-testid="stFileUploaderDropzone"] p {
+    color: #a09dba !important;
+    font-family: 'DM Mono', monospace !important;
+    font-size: 0.8rem !important;
 }
-.stTextArea textarea:focus { border-color: #2affd0 !important; box-shadow: 0 0 0 3px rgba(42,255,208,0.08) !important; }
+
+/* Upload button inside the dropzone */
+.stFileUploader button {
+    background: rgba(42,255,208,0.1) !important;
+    border: 1px solid rgba(42,255,208,0.3) !important;
+    color: #2affd0 !important;
+    border-radius: 8px !important;
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+/* Uploaded file name */
+[data-testid="stFileUploaderFile"] span,
+[data-testid="stFileUploaderFile"] p,
+.uploadedFileName { color: #e8e6f0 !important; }
+
+/* ── Textarea ────────────────────────────── */
+.stTextArea textarea {
+    background: #0d0d18 !important;
+    border: 1.5px solid #2a2a3e !important;
+    border-radius: 12px !important;
+    color: #e8e6f0 !important;
+    font-family: 'DM Mono', monospace !important;
+    font-size: 0.82rem !important;
+    line-height: 1.6 !important;
+}
+.stTextArea textarea:focus {
+    border-color: #2affd0 !important;
+    box-shadow: 0 0 0 3px rgba(42,255,208,0.08) !important;
+}
+/* Placeholder text */
+.stTextArea textarea::placeholder { color: #3d3b52 !important; opacity: 1 !important; }
+
+/* ── Any leftover Streamlit default text ─── */
+.stMarkdown p, .stMarkdown span { color: #e8e6f0 !important; }
+[data-testid="stText"] { color: #a09dba !important; }
+p { color: #c0bdd4 !important; }
 .stButton > button {
     width: 100% !important;
     background: linear-gradient(135deg, #2affd0 0%, #00c9a7 100%) !important;
